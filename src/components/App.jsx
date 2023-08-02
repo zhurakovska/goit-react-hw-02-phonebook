@@ -15,11 +15,18 @@ export class App extends React.Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   handleAddContact = contact => {
+    const contactExists = this.state.contacts.some(
+      existingName =>
+        existingName.name.toLowerCase() === contact.name.toLowerCase()
+    );
+
+    if (contactExists) {
+      alert(`${contact.name} is already exist`);
+      return;
+    }
     // тут мы передаем обьект контакт который представляет собой объект, который содержит информацию о новом контакте, который нужно добавить.
     const { name, number } = contact;
     const id = nanoid();
@@ -30,6 +37,17 @@ export class App extends React.Component {
     }));
   };
 
+  handleFilterChange = filterValue => {
+    this.setState({ filter: filterValue });
+    console.log(filterValue);
+  };
+
+  getfilteredContacts = () => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
+
   handleDeleteContact = id => {
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== id),
@@ -37,16 +55,17 @@ export class App extends React.Component {
   };
 
   render() {
-    const { contacts } = this.state;
+    const filteredContacts = this.getfilteredContacts();
+    const { filter } = this.state;
     return (
       <>
         <h1>Phonebook</h1>
         <FormData onAddContact={this.handleAddContact} />
 
         <h2>Contacts</h2>
-        <Filter />
+        <Filter filter={filter} onChangeValue={this.handleFilterChange} />
         <Contacts
-          options={contacts}
+          options={filteredContacts}
           onDeleteContact={this.handleDeleteContact}
         />
       </>

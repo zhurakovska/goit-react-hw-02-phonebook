@@ -1,9 +1,14 @@
 import React from 'react';
 
-export const Filter = () => {
+export const Filter = ({ filter, onChangeValue }) => {
   return (
     <div>
-      <input />
+      <input
+        type="text"
+        placeholder="Write contact"
+        value={filter}
+        onChange={e => onChangeValue(e.target.value)}
+      />
     </div>
   );
 };

@@ -28,6 +28,7 @@ export class FormData extends React.Component {
 
   render() {
     const { name, number } = this.state;
+
     return (
       <>
         <form action="" onSubmit={this.handleSubmit}>
