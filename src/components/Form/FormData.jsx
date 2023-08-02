@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Form, Label, Input, Button } from './Form.styled';
+
 const INITIAL_STATE = {
   name: '',
   number: '',
@@ -31,10 +33,10 @@ export class FormData extends React.Component {
 
     return (
       <>
-        <form action="" onSubmit={this.handleSubmit}>
-          <label htmlFor="">
+        <Form action="" onSubmit={this.handleSubmit}>
+          <Label htmlFor="">
             Name:
-            <input
+            <Input
               onChange={this.handleInputChange}
               value={name}
               type="text"
@@ -43,10 +45,10 @@ export class FormData extends React.Component {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
-          </label>
-          <label htmlFor="">
+          </Label>
+          <Label htmlFor="">
             Number:
-            <input
+            <Input
               onChange={this.handleInputChange}
               value={number}
               type="tel"
@@ -55,9 +57,9 @@ export class FormData extends React.Component {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-          </label>
-          <button>Add contact</button>
-        </form>
+          </Label>
+          <Button>Add contact</Button>
+        </Form>
       </>
     );
   }

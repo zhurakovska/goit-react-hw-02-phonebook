@@ -7,6 +7,8 @@ import { FormData } from './Form/FormData';
 import { Contacts } from './Form/Contacts';
 import { Filter } from './Form/Filter';
 
+import { Container, Title } from './Form/Form.styled';
+
 export class App extends React.Component {
   state = {
     contacts: [
@@ -59,8 +61,8 @@ export class App extends React.Component {
     const filteredContacts = this.getfilteredContacts();
     const { filter } = this.state;
     return (
-      <>
-        <h1>Phonebook</h1>
+      <Container>
+        <Title>Phonebook</Title>
         <FormData onAddContact={this.handleAddContact} />
 
         <h2>Contacts</h2>
@@ -69,7 +71,7 @@ export class App extends React.Component {
           options={filteredContacts}
           onDeleteContact={this.handleDeleteContact}
         />
-      </>
+      </Container>
     );
   }
 }

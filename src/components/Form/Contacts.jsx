@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ContactList, ContactItem, DeleteButton } from './Form.styled';
+
 export const Contacts = ({ options, onDeleteContact }) => {
   return (
-    <ul>
+    <ContactList>
       {options.map(({ id, name, number }) => (
-        <li key={id}>
+        <ContactItem key={id}>
           {name} {number}
-          <button onClick={() => onDeleteContact(id)}>Delete</button>
-        </li>
+          <DeleteButton onClick={() => onDeleteContact(id)}>
+            Delete
+          </DeleteButton>
+        </ContactItem>
       ))}
-    </ul>
+    </ContactList>
   );
 };
 
