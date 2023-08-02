@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -77,6 +78,5 @@ export const DeleteButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-    margin-left: 20px;
-}
+  margin-left: 20px;
 `;
