@@ -16,8 +16,8 @@ export class FormData extends React.Component {
     this.props.onAddContact({
       // тут мы получаем наш contact деструтуризируем
       // тут мы передаем значения name и number(которое записали в инпуте) при сабмите мы прокидываем это в contact
-      name: name,
-      number: number,
+      name,
+      number,
     });
 
     this.setState(INITIAL_STATE);
@@ -64,3 +64,7 @@ export class FormData extends React.Component {
     );
   }
 }
+
+FormData.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
+};

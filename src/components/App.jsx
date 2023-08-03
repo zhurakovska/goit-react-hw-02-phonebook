@@ -31,12 +31,9 @@ export class App extends React.Component {
       return;
     }
     // тут мы передаем обьект контакт который представляет собой объект, который содержит информацию о новом контакте, который нужно добавить.
-    const { name, number } = contact;
     const id = nanoid();
     this.setState(prev => ({
-      contacts: [...prev.contacts, { id, name, number }],
-      name: '',
-      number: '',
+      contacts: [...prev.contacts, contact],
     }));
   };
 
@@ -75,14 +72,3 @@ export class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  filter: PropTypes.string,
-};
